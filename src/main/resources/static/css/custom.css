@@ -1,0 +1,75 @@
+/* .login-div {
+  padding-top: 50px;
+} */
+
+.login-div p {
+  display: inline !important;
+  /* padding-left: 80px; */
+  /* margin-left: 50px; */
+  color: #747881;
+  font-size: 14px !important;
+}
+
+.register-div p {
+  display: inline;
+  /* padding-left: 50px; */
+  /* margin-left: 29px; */
+  color: #747881;
+  font-size: 14px !important;
+}
+
+.register-div a {
+  margin-left: 25px;
+  color: #747881 !important;
+  font-size: 14px !important;
+}
+
+.login-div a {
+  margin-left: 25px;
+  color: #747881 !important;
+  font-size: 14px !important;
+}
+
+.auth-error {
+    color: red;
+    margin-bottom: 20px;
+}
+
+
+.form-control:focus {
+    box-shadow: none;
+    border-color: #007bff
+}
+
+.profile-button {
+    background: #007bff;
+    box-shadow: none;
+    border: none
+}
+
+.profile-button:focus {
+   /*  background: #682773; */
+    box-shadow: none
+}
+
+.profile-button:active {
+   /*  background: #682773; */
+    box-shadow: none
+}
+
+.back:hover {
+    color: #007bff;
+    cursor: pointer
+}
+
+.about-us-row{
+    background: #d3a923;
+    margin-bottom: 20px;
+    border: 2px solid #b9b6b6;
+    border-radius: 25px;
+    border-radius: 2px 2px #eee;
+}
+
+.text-white {
+ color: #fffff;
+}
