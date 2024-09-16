@@ -16,22 +16,20 @@ public class LoginController {
 	
 	@Autowired
 	LoginService loginService;
-
-//	private final LoginService loginService;
-//
-//	public LoginController(LoginService loginService) {
-//		this.loginService = loginService;
-//	}
 	
 	@RequestMapping(value="/login", method = RequestMethod.GET)
-	public String showLoginPage() {
-		return "login";
+	public String showLoginPage(HttpSession session) {
+		Boolean isSignedIn = (Boolean) session.getAttribute("isSignedIn");
+		boolean isSignedInBoolean = (isSignedIn != null && isSignedIn);
+		System.out.println(isSignedInBoolean);
+		return isSignedInBoolean ? "redirect:/homePage" : "login";
 	}
 	
 	@RequestMapping(value="/login", method = RequestMethod.POST)
 	public String showWelcomePage(HttpSession session, ModelMap model, @RequestParam String name, @RequestParam String password){
 
 		boolean isValidUser = loginService.validateUser(name, password);
+		System.out.println("Is valid user: " + isValidUser);
 
 		if (!isValidUser) {
 			model.put("errorMessage", "Invalid Credentials");
@@ -39,12 +37,16 @@ public class LoginController {
 		}
 
 		session.setAttribute("isSignedIn", true);
+		System.out.println("Session ID after login: " + session.getId());
+		System.out.println("isSignedIn after login: " + session.getAttribute("isSignedIn"));
 
 		 return "redirect:/homePage";
 	}
 	
 	@RequestMapping(value = "/homePage", method = RequestMethod.GET)
-	public String getHomePage(ModelMap mode) {
+	public String getHomePage(HttpSession session, ModelMap mode) {
+		System.out.println("Session ID on home: " + session.getId());
+		System.out.println("isSignedIn on home: " + session.getAttribute("isSignedIn"));
 		return "home";
 	}
 	

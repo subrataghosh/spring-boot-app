@@ -38,7 +38,8 @@ public class SecurityConfig  {
                                 .loginPage("/login")
                                 .loginProcessingUrl("/login")
                                 .usernameParameter("name")
-                                .defaultSuccessUrl("/homePage", true)
+//                                .defaultSuccessUrl("/homePage", true)
+                                .successHandler(new CustomSuccessHandler())
                                 .failureUrl("/login?error=true")
                                 .permitAll()
                 )
@@ -57,10 +58,10 @@ public class SecurityConfig  {
         return new CustomAuthenticationManager(authService);
     }
 
-    @Bean
-    public AuthenticationSuccessHandler customSuccessHandler() {
-        return new CustomSuccessHandler();
-    }
+//    @Bean
+//    public AuthenticationSuccessHandler customSuccessHandler() {
+//        return new CustomSuccessHandler();
+//    }
 
 
 }
