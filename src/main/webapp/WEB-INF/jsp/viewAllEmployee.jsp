@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>View Employee</title>
+<title>View All Employee</title>
  <jsp:include page="./includes/commonStyleIncludes.jsp" />
 <jsp:include page="./includes/commonheaderJsIncludes.jsp" />
 
@@ -31,15 +31,17 @@
 	<div id="wrapper ">
 		<div id="page-wrapper">
 			<div class="container-fluid">
-				<h4 class="page-header" style="margin-left: 20px ; margin-top: 20px;">View Employee</h4>
+				<h4 class="page-header" style="margin-left: 20px ; margin-top: 20px;">View All Employee</h4>
 
 				<div class="col-lg-12 PadTop5">
                     <div class="employee-grid">
-                        <div class="employee-item">
-                            <div class="employee-name">Name: ${employeeData.name}</div>
-                            <div class="employee-sex">Sex: ${employeeData.sex}</div>
-                            <div class="employee-age">Age: ${employeeData.age}</div>
-                        </div>
+                        <c:forEach var="employee" items="${allEmployees}">
+                            <div class="employee-item">
+                                <div class="employee-name">Name: ${employee.name}</div>
+                                <div class="employee-sex">Sex: ${employee.sex}</div>
+                                <div class="employee-age">Age: ${employee.age}</div>
+                            </div>
+                        </c:forEach>
                     </div>
 				</div>
 

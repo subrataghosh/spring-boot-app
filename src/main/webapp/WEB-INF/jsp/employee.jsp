@@ -38,7 +38,7 @@
                                         <td>${employee.name}</td>
                                         <td>${employee.age}</td>
                                         <td>${employee.sex}</td>
-                                        <td><a href="/viewEmployee" >View</a></td>
+                                        <td><a href="/viewEmployee?empId=${employee.id}" >View</a></td>
 
                                     </tr>
                                 </c:forEach>

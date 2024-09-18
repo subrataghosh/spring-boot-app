@@ -8,6 +8,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 
@@ -38,8 +39,17 @@ public class EmployeeController {
         return "redirect:/employee";
     }
 
+    @RequestMapping(value = "/viewAllEmployee" , method = RequestMethod.GET)
+    public String viewAllEmployee(ModelMap model){
+        model.put("allEmployees", employeeService.getAllEmployees());
+        return "viewAllEmployee";
+
+    }
+
     @RequestMapping(value = "/viewEmployee" , method = RequestMethod.GET)
-    public String viewEmployee(){
+    public String viewEmployee(@RequestParam(value="empId", required=true) String employeeId, ModelMap model){
+        System.out.println(employeeId);
+        model.put("employeeData", employeeService.getEmployeeById(employeeId));
         return "viewEmployee";
 
     }

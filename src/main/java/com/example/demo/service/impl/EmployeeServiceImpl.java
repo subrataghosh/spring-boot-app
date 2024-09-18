@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -30,6 +31,12 @@ public class EmployeeServiceImpl implements EmployeeService {
         employee.setId(UUID.randomUUID().toString());
         com.example.demo.entity.Employee savedEntity = employeeDao.save(convertToEntity(employee));
         return savedEntity != null && savedEntity.getId() != null;
+    }
+
+    @Override
+    public Employee getEmployeeById(String employeeId) {
+        Optional<com.example.demo.entity.Employee> employeeEnity = employeeDao.findById(employeeId);
+        return convertToModel(employeeEnity.get());
     }
 
 

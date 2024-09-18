@@ -16,6 +16,9 @@
       <li class="nav-item">
         <a class="nav-link text-white" href="/employee">Employee</a>
       </li>
+       <li class="nav-item">
+           <a class="nav-link text-white" href="/viewAllEmployee">View All Employee</a>
+       </li>
     </ul>
   </div>
    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
