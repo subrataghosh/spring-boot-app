@@ -35,6 +35,25 @@
                           <input type="text" class="form-control" id="inputSex" placeholder="Employee Sex" name="sex">
                         </div>
 					  </div>
+
+                     <div class="mb-2 mt-2">
+                          <h4>Dependents</h4>
+                          <div id="dependents">
+                              <div class="dependent" id="dependent-0">
+                                  <label for="dependents[0].name">Dependent Name:</label>
+                                  <input class="" type="text" name="dependents[0].name" required/>
+
+                                  <label for="dependents[0].relation">Relation:</label>
+                                  <input class="" type="text" name="dependents[0].relation" required/>
+                                  <button type="button" class="remove-dependent" style="display:none;">Remove</button>
+                              </div>
+                          </div>
+
+                          <button class="btn btn-secondary" type="button" id="add-dependent-btn">Add Dependent</button>
+                      </div>
+
+
+
 					  <button type="submit"  id="addDevice" class="btn btn-primary">Submit</button>
 					  <button type="reset" class="btn btn-default"
 									onclick="window.location.reload(true);">Reset</button>
@@ -51,5 +70,38 @@
 </body>
 
 <script type="text/javascript">
+
+     var dependentIndex = 1;
+
+     function addDependent() {
+         var newDependentDiv = `
+             <div class="dependent" id="dependent-${dependentIndex}">
+                 <label for="dependents[${dependentIndex}].name">Dependent Name:</label>
+                 <input type="text" name="dependents[` + dependentIndex + `].name" required/>
+
+                 <label for="dependents[` + dependentIndex + `].relation">Relation:</label>
+                 <input type="text" name="dependents[` + dependentIndex + `].relation" required/>
+
+                 <button type="button" class="remove-dependent">Remove</button>
+             </div>
+         `;
+
+         $('#dependents').append(newDependentDiv);
+
+         dependentIndex++;
+     }
+
+     function removeDependent(button) {
+         $(button).closest('.dependent').remove();
+     }
+
+     $('#add-dependent-btn').on('click', function() {
+         addDependent();
+     });
+
+     $(document).on('click', '.remove-dependent', function() {
+         removeDependent(this);
+     });
+
 </script>
 </html>

@@ -35,7 +35,7 @@ public class EmployeeController {
     public String saveEmployeeData(HttpSession session, @ModelAttribute("Employee") Employee employee, ModelMap model){
 
         employeeService.addEmployee(employee);
-
+        
         return "redirect:/employee";
     }
 
